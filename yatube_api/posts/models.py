@@ -15,6 +15,7 @@ class Group(models.Model):
         return self.title
 
     class Meta:
+        ordering = ('slug',)
         verbose_name = 'Группа'
         verbose_name_plural = 'Группы'
 
@@ -50,6 +51,7 @@ class Post(models.Model):
         return self.text
 
     class Meta:
+        ordering = ('pub_date', )
         verbose_name = 'Пост'
         verbose_name_plural = 'Посты'
 
@@ -74,6 +76,7 @@ class Comment(models.Model):
     )
 
     class Meta:
+        ordering = ('-created', )
         verbose_name = 'Комментарий'
 
 
@@ -92,6 +95,7 @@ class Follow(models.Model):
     )
 
     class Meta:
+        ordering = ('following__username', )
         unique_together = ('user', 'following')
         verbose_name = 'Подписка'
         verbose_name_plural = 'Подписки'
